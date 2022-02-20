@@ -2,4 +2,8 @@
 // incluindo as aspas: O caractere de 
 // escape \t representa uma 
 // “tabulação”
-k
+void main() {
+  String frase = r'O caractere de escape \t representa uma "tabulação"';
+  print(frase);
+  
+}

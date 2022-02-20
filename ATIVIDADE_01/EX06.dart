@@ -40,5 +40,5 @@ String calc (n1, n2, n3) {
   } else if ((soma) / 3 >= 4 && (soma) / 3 <= 7) {
     return 'exame final';
   }
-  throw 'erro';
+  throw 'erro de retorno nullo';
 }
