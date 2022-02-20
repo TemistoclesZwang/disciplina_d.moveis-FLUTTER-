@@ -22,11 +22,11 @@ void main() {
 
 }
 
-  void cantorElvis() {
-    int login = 2;
-    int senha = 2;
+  // void cantorElvis() {
+  //   int login = 2;
+  //   int senha = 2;
 
-    final elvisOperator = login?.senha?.elvisOperator; //!4
-  }
+  //   final elvisOperator = login?.senha?.elvisOperator; //!4
+  // }
 
 //!5 throw
