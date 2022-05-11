@@ -1,0 +1,39 @@
+2022/05/11-10:05:33.899 dda3 Reusing MANIFEST /home/temis_zwang/testeComSelenium/codigo/Cookies Webdriver Selenium/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/05/11-10:05:33.900 dda3 Recovering log #1226
+2022/05/11-10:05:33.906 dda3 Reusing old log /home/temis_zwang/testeComSelenium/codigo/Cookies Webdriver Selenium/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001226.log 
+2022/05/11-10:05:33.907 dda3 Delete type=2 #1206
+2022/05/11-10:05:33.907 dda3 Delete type=2 #1213
+2022/05/11-10:05:33.907 dda3 Delete type=2 #1210
+2022/05/11-10:05:33.907 dda3 Delete type=2 #1204
+2022/05/11-10:05:33.907 dda3 Delete type=2 #1208
+2022/05/11-10:05:33.907 dda3 Delete type=2 #1211
+2022/05/11-10:05:33.907 dda3 Delete type=2 #1209
+2022/05/11-10:05:33.907 dda3 Delete type=2 #1228
+2022/05/11-10:05:33.907 dda3 Delete type=2 #1205
+2022/05/11-10:05:33.907 dda3 Delete type=2 #1207
+2022/05/11-10:05:33.907 dda3 Delete type=2 #1212
+2022/05/11-10:05:35.565 dda1 Compacting 1@1 + 11@2 files
+2022/05/11-10:05:35.633 dda1 Generated table #1243@1: 26596 keys, 2272827 bytes
+2022/05/11-10:05:35.706 dda1 Generated table #1244@1: 26798 keys, 2249977 bytes
+2022/05/11-10:05:35.748 dda1 Generated table #1245@1: 6373 keys, 2130047 bytes
+2022/05/11-10:05:35.848 dda1 Generated table #1246@1: 7029 keys, 2127598 bytes
+2022/05/11-10:05:35.878 dda1 Generated table #1247@1: 6214 keys, 2128281 bytes
+2022/05/11-10:05:35.929 dda1 Generated table #1248@1: 76594 keys, 2218903 bytes
+2022/05/11-10:05:35.996 dda1 Generated table #1249@1: 100767 keys, 2251041 bytes
+2022/05/11-10:05:36.129 dda1 Generated table #1250@1: 101669 keys, 2251904 bytes
+2022/05/11-10:05:36.226 dda1 Generated table #1251@1: 103268 keys, 2253483 bytes
+2022/05/11-10:05:36.287 dda1 Generated table #1252@1: 96490 keys, 2111243 bytes
+2022/05/11-10:05:36.287 dda1 Compacted 1@1 + 11@2 files => 21995304 bytes
+2022/05/11-10:05:36.287 dda1 compacted to: files[ 0 1 24 0 0 0 0 ]
+2022/05/11-10:05:36.287 dda1 Delete type=2 #1218
+2022/05/11-10:05:36.287 dda1 Delete type=2 #1216
+2022/05/11-10:05:36.287 dda1 Delete type=2 #1229
+2022/05/11-10:05:36.287 dda1 Delete type=2 #1220
+2022/05/11-10:05:36.288 dda1 Delete type=2 #1224
+2022/05/11-10:05:36.288 dda1 Delete type=2 #1223
+2022/05/11-10:05:36.288 dda1 Delete type=2 #1214
+2022/05/11-10:05:36.288 dda1 Delete type=2 #1221
+2022/05/11-10:05:36.288 dda1 Delete type=2 #1215
+2022/05/11-10:05:36.288 dda1 Delete type=2 #1217
+2022/05/11-10:05:36.288 dda1 Delete type=2 #1222
+2022/05/11-10:05:36.288 dda1 Delete type=2 #1219
