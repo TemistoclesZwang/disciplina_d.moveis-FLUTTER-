@@ -4,57 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class EditorTexto {
-  // EditorTexto(String textoInput, int indexComando) {
-  //   this._textoInput = textoInput;
-  //   this._indexComando = indexComando;
-  // }
+  TextStyle SeletorEstilo(int index, List<bool> ativarDesativarSeletores) {
 
-  // get textoInput => textoInput;
-  // get indexComando => indexComando;
+    TextStyle estilos = TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.italic,
+      decoration: TextDecoration.underline,
+    );
 
-  // set _indexComando(int _indexComando) {}
-  // set _textoInput(String _textoInput) {}
+    if (index == 0 && ativarDesativarSeletores[index] == true) {
+      estilos = TextStyle(fontWeight:null);
 
-  List SplitDotexto(String textoInput) {
-    //split String textoInput
-    return textoInput.split(' ');
-  }
-
-  TextStyle SeletorEstilo(int index) {
-    bool negrito = false;
-    bool italico = false;
-    bool sublinhado = false;
-
-    switch (index) {
-      case 0:
-        if (negrito == false) {
-          negrito == true;
-          return TextStyle(fontWeight: FontWeight.bold);
-        } else {
-          negrito == false;
-          print(negrito);
-          return TextStyle(color: Colors.black);
-          
-        }
-      case 1:
-        italico = true;
-        return TextStyle(fontStyle: FontStyle.italic);
-        break;
-      case 2:
-        sublinhado = true;
-        return TextStyle(decoration: TextDecoration.underline);
-        break;
-      default:
-        return TextStyle(color: Colors.black);
+    } else if (index == 1 && ativarDesativarSeletores[index] == true) {
+      estilos = TextStyle(fontStyle: null);
+      
+    } else if (index == 2 && ativarDesativarSeletores[index] == true) {
+      estilos = TextStyle(decoration: null);
     }
+    return estilos;
   }
-
-  // Italico(String textoInput, int indexComando) {
-  //   if (indexComando == 0) {
-  //       print('negrito');
-  //     // return textoInput.replaceAll(
-  //         // RegExp(r'\*\*(.*?)\*\*'), '<i>TESTANDO</i>');
-  //         //.da pra usar esse comando HTML no dart ? O_O
-  //   }
-  // }
 }
+// estilos = TextStyle(fontWeight:FontWeight.bold).merge(estilos);

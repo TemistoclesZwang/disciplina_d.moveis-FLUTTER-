@@ -1,5 +1,6 @@
-import 'package:/q_1/editor.dart';
+import 'package:q_1/editor.dart';
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 void main() {
   runApp(const MyApp());
@@ -55,7 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  List<bool> _ativarDesativarSeletores = List.generate(5, (_) => false);
+  // List<bool> ativarDesativarSeletores = List.generate(5, (_) => false);
+  List<bool> ativarDesativarSeletores = [false, false, false, false, false];
   String _textoRecebidoInput = ' ';
   late List _ListaTextoRecebidoInput;
   EditorTexto editorTexto = EditorTexto();
@@ -81,15 +83,12 @@ class _MyHomePageState extends State<MyHomePage> {
               onFieldSubmitted: (String texto) {
                 setState(() {
                   _textoRecebidoInput = texto; //!
-                  _ListaTextoRecebidoInput =
-                      editorTexto.SplitDotexto(texto); //!
-                  print(_textoRecebidoInput);
+                  // print(_textoRecebidoInput);
                 });
               },
               onChanged: (String value) {
                 setState(() {
                   _textoRecebidoInput = value;
-                  // print(_textoRecebidoInput);
                 });
               },
             ),
@@ -100,22 +99,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   Icon(Icons.format_bold),
                   Icon(Icons.format_italic),
                   Icon(Icons.format_underline),
-                  Icon(Icons.format_color_fill), //gradient
-                  Icon(Icons.format_clear), //limpar
+                  Icon(Icons.auto_fix_high), //gradient
+                  Icon(Icons.invert_colors) 
                 ],
-                // isSelected: <bool>[
-                //   false,
-                //   false,
-                //   false,
-                // ],
-                isSelected: _ativarDesativarSeletores,
+                isSelected: ativarDesativarSeletores,
                 onPressed: (int index) {
-                  // editorTexto.Negrito(
-                  // _textoRecebidoInput); //!enviar somente index
+
                   pegarBotaoSelecionado = index;
                   setState(() {
-                    _ativarDesativarSeletores[index] =
-                        !_ativarDesativarSeletores[index];
+                    ativarDesativarSeletores[index] =
+                        !ativarDesativarSeletores[index];
+                    print(ativarDesativarSeletores);
                   });
                 }),
             SizedBox(height: 40),
@@ -124,15 +118,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 // text: _textoRecebidoInput,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 30,
+                  fontSize: 40,
                 ),
                 children: <TextSpan>[
                   TextSpan(
-                      text: _textoRecebidoInput,
-                      style: editorTexto.SeletorEstilo(pegarBotaoSelecionado)),
-                  // style: TextStyle(fontWeight: FontWeight.bold)),
-                  //!aplicar style de acordo com index recebido
-                  // TextSpan(text: 'italico', style: TextStyle(fontStyle: FontStyle.italic)),
+                    text: _textoRecebidoInput,
+                    // style: editorTexto.SeletorEstilo(pegarBotaoSelecionado,ativarDesativarSeletores)),
+                    style: (TextStyle(
+                      fontWeight: ativarDesativarSeletores[0] ? FontWeight.bold:null,
+                      fontStyle: ativarDesativarSeletores[1] ? FontStyle.italic:null,
+                      decoration: ativarDesativarSeletores[2] ? TextDecoration.underline:null,
+                      backgroundColor: ativarDesativarSeletores[3] ? Colors.amber:null,
+                      color: ativarDesativarSeletores[4] ? 
+                        Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0):null,
+                    )),
+                  ),
                 ],
               ),
             ),
@@ -142,8 +142,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-//! usar rich text para implementar negrito,italico,etc
-//. fazer o split da frase digitada
-//;como selecionar o texto a ser negrito,italico,etc ?
-//. cada i do split vai para dentro de um span do rich text
-//. cada icon do toggle ativa ou desativa o span
