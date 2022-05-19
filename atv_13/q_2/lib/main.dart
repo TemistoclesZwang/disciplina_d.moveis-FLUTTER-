@@ -30,7 +30,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    //
+    String _textoRecebidoInput = '';
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -39,12 +40,26 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+//!exemplo 1
+            RawKeyboardListener(
+              child: TextField(
+                onChanged: (String texto) {
+                  setState(() {
+                    _textoRecebidoInput = texto;
+                  });
+                },
+              ),
+              focusNode: FocusNode(),
+              onKey: (event) {
+                print(event);
+              },
+            ),
+//!exemplo2
             TextFormField(
               decoration: const InputDecoration(
                 labelText: 'Campo 1',
               ),
-              onEditingComplete:
-                () => FocusScope.of(context).nextFocus(),
+              onEditingComplete: () => FocusScope.of(context).nextFocus(),
             ),
             // TextButton.icon(
             //   onPressed: () {},
@@ -56,15 +71,13 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: const InputDecoration(
                 labelText: 'Campo 2',
               ),
-              onEditingComplete:
-                () => FocusScope.of(context).nextFocus(),
+              onEditingComplete: () => FocusScope.of(context).nextFocus(),
             ),
-                        TextFormField(
+            TextFormField(
               decoration: const InputDecoration(
                 labelText: 'Campo 3',
               ),
-              onEditingComplete:
-                () => FocusScope.of(context).nextFocus(),
+              onEditingComplete: () => FocusScope.of(context).nextFocus(),
             ),
           ],
         ),

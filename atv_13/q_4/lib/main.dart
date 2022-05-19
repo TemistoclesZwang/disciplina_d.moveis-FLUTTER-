@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,7 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _lights ? Color.fromARGB(255, 255, 244, 224) : Color.fromARGB(255, 82, 129, 200),
+      backgroundColor: _lights ? Color.fromARGB(255, 255, 244, 224) :
+        Color.fromARGB(255, 82, 129, 200),
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -45,20 +47,41 @@ class _MyHomePageState extends State<MyHomePage> {
               _lights
                   ? 'assets/2.png'
                   : 'assets/1.png',
-              // width: 500,
-              // height: 500,
             ),
             SizedBox(
               height: 80,
             ),
+            CupertinoSwitch(
+              value: _lights,
+              onChanged: (bool value) {
+                setState(() {
+                  _lights = value;
+                });
+              },
+            ),
             SwitchListTile(
-                title: const Text('Interruptor'),
+              tileColor:  _lights ? Color.fromARGB(255, 250, 229, 191) :
+                Color.fromARGB(255, 65, 120, 203),
+                title: const Text('Android'),
                 value: _lights,
                 onChanged: (bool value) {
                   setState(() {
                     _lights = value;
                   });
                 }),
+                Switch.adaptive(
+                  splashRadius: 50,
+                  activeThumbImage: AssetImage('assets/2.png'),
+                  activeTrackColor: Colors.blue,
+                  inactiveThumbImage: AssetImage('assets/1.png'),
+                  inactiveTrackColor: Colors.grey,
+                  value: _lights,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _lights = value;
+                    });
+                  },
+                  )
           ],
         ),
       ),

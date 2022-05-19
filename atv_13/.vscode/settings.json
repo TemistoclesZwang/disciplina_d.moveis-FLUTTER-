@@ -3,5 +3,14 @@
       "activityBar.background": "#59093F",
       "titleBar.activeBackground": "#7C0C58",
       "titleBar.activeForeground": "#FFFBFE"
-   }
+   },
+   "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true
+   },
+   "explorerExclude.backup": null
 }

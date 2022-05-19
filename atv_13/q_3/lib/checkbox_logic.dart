@@ -9,7 +9,8 @@ class CheckboxLogic {
     b1 = true;
     b2 = true;
     b3 = true;
-    } if (!b4) {
+
+    } else {
     b1 = false;
     b2 = false;
     b3 = false;

@@ -45,14 +45,16 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget'+ 'consectetur tempor, nisl nunc egestas nisi, eu porttitor nisl nunc euismod nunc.'+ 'Doneceuismod, nisl eget consectetur tempor, nisl nunc egestas nisi, eu porttitornisl'+ 'nunc euismod nunc. Donec euismod, nisl eget consectetur tempor, nisl nunc egestas', 
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n'
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
               style: const TextStyle(fontSize: 17),
             ),
+            const SizedBox(height: 30),
             ListView(
               shrinkWrap: true,
               children: <Widget>[
                 CheckboxListTile(
-                  title: const Text('Aceita doar seus dados pro Zuqberg ?'),
+                  title: const Text('Aceito compartilhar dados para melhoria do aplicativo'),
                   value: checkboxLogic.b1,
                   onChanged: (bool? value) {
                     setState(() {
@@ -68,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 CheckboxListTile(
                   title: const Text(
-                      'Aceita ser espionado pelo microfone do celular?'),
+                      'Aceito que meu login seja utilizado para fins de marketing'),
                   value: checkboxLogic.b2,
                   onChanged: (bool? value) {
                     setState(() {
@@ -83,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
               shrinkWrap: true,
               children: <Widget>[
                 CheckboxListTile(
-                  title: const Text('Aceita doar suas mensagens de texto ?'),
+                  title: const Text('Autorizo o recebimento de mensagens SMS'),
                   value: checkboxLogic.b3,
                   onChanged: (bool? value) {
                     setState(() {
@@ -115,4 +117,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-//!falta tristate parcilamente marcado

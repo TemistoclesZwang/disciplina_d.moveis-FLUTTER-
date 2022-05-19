@@ -31,28 +31,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final TextEditingController _controller = TextEditingController(); //!
 
   @override
   void initState() {
     super.initState();
 
-    _controller.addListener(() {
-      autofocus:
-      true;
-      final String text = _controller.text.toLowerCase();
-      _controller.value = _controller.value.copyWith(
-        text: text,
-        selection:
-            TextSelection(baseOffset: text.length, extentOffset: text.length),
-        composing: TextRange.empty,
-      );
-    });
   }
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
   }
 
@@ -74,7 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextFormField(
-              // controller: _controller,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.all(30),
                 border: OutlineInputBorder(),
@@ -83,7 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
               onFieldSubmitted: (String texto) {
                 setState(() {
                   _textoRecebidoInput = texto; //!
-                  // print(_textoRecebidoInput);
                 });
               },
               onChanged: (String value) {
@@ -104,7 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
                 isSelected: ativarDesativarSeletores,
                 onPressed: (int index) {
-
                   pegarBotaoSelecionado = index;
                   setState(() {
                     ativarDesativarSeletores[index] =
@@ -123,14 +107,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <TextSpan>[
                   TextSpan(
                     text: _textoRecebidoInput,
-                    // style: editorTexto.SeletorEstilo(pegarBotaoSelecionado,ativarDesativarSeletores)),
                     style: (TextStyle(
-                      fontWeight: ativarDesativarSeletores[0] ? FontWeight.bold:null,
-                      fontStyle: ativarDesativarSeletores[1] ? FontStyle.italic:null,
-                      decoration: ativarDesativarSeletores[2] ? TextDecoration.underline:null,
-                      backgroundColor: ativarDesativarSeletores[3] ? Colors.amber:null,
+                      fontWeight: ativarDesativarSeletores[0] ? 
+                        FontWeight.bold:null,
+                      fontStyle: ativarDesativarSeletores[1] ? 
+                        FontStyle.italic:null,
+                      decoration: ativarDesativarSeletores[2] ? 
+                        TextDecoration.underline:null,
+                      backgroundColor: ativarDesativarSeletores[3] ? 
+                        Colors.amber:null,
                       color: ativarDesativarSeletores[4] ? 
-                        Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0):null,
+                        Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).
+                          withOpacity(1.0):null,
                     )),
                   ),
                 ],
