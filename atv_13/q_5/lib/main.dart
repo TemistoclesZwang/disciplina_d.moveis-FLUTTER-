@@ -10,11 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Zoom Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'ZOOM app'),
     );
   }
 }
@@ -40,18 +40,14 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-              Image.asset('assets/ely.jpg',
-              width: _zoom,
-              height: _zoom,
-            ),
-            Column(
-          children: <Widget>[
-            SizedBox(
-              height: 80,
-            ),
+            Transform.scale(
+                scale: _zoom / 100,
+                child: Image.asset('assets/ely.jpg'),
+              ),
+              //change scale
             Slider(
               value: _zoom,
-              min: 0.0,
+              min: 100,
               max: 500,
               onChanged: (double value) {
                 setState(() {
@@ -59,7 +55,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
               },
             ),
-            ]),
+
+            // Image.asset('assets/ely.jpg',
+            //   width: _zoom,
+            //   height: _zoom,
+            // ),
+            // SizedBox(
+            //   height: 80,
+            // ),
+            // Slider(
+            //   value: _zoom,
+            //   min: 0.0,
+            //   max: 500,
+            //   onChanged: (double value) {
+            //     setState(() {
+            //       _zoom = value;
+            //     });
+            //   },
+            // ),
+
+            
           ],
           
         ),
