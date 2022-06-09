@@ -4,23 +4,25 @@ import '../../../../../core/error/failure.dart';
 
 import '../../entities/pokemon_entity.dart';
 import '../../repositories/pokemon_repository.dart';
-import '../../usecases/get_one_pokemon/get_one_pokemon_usecase.dart';
+import '../pokemon_usecase.dart';
 
 
-class GetOnePokemonImp implements GetOnePokemonUsecase {
-  final PokemonRepository _pokemonRepository;
-  GetOnePokemonImp(this._pokemonRepository);
+class GetOnePokemonImp extends UseCase<PokemonEntity, Params> {
+  final PokemonRepository repository;
 
+  GetOnePokemonImp(this.repository);
 
-    Future<Either<Failure, PokemonEntity>> execute({
-    required int id,
-  }) async {
-    return await _pokemonRepository.getOnePokemon(id);
-  }
-  
   @override
-  Future<List> call() {
-    throw UnimplementedError();
+  Future<Either<Failure, PokemonEntity>> call(Params params) async {
+    return await repository.getOnePokemon(params.id);
   }
 }
-  
+
+class Params extends Equatable {
+  final int id;
+
+  const Params({required this.id});
+
+  @override
+  List<Object?> get props => throw None();
+}
