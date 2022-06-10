@@ -1,36 +1,36 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
-import '../../entities/pokemon_entity.dart';
-import '../../repositories/pokemon_repository.dart';
-import '../../usecases/get_one_pokemon/get_one_pokemon_imp_test.dart';
+import '../../../../../../lib/features/pokemon_clean_arch/domain/usecases/get_all_pokemon/get_all_pokemon_imp.dart';
+import '../../../../../../lib/features/pokemon_clean_arch/domain/repositories/pokemon_repository.dart';
+import '../../../../../../lib/features/pokemon_clean_arch/domain/entities/pokemon_entity.dart';
+import '../../../../../../lib/features/pokemon_clean_arch/domain/usecases/pokemon_usecase.dart';
 
-
-class MockPokemonRepository extends Mock
-    implements PokemonRepository {}
-
+class MockPokemonRepository extends Mock implements PokemonRepository {}
 void main() {
-  GetOnePokemonImp usecase;
-  MockPokemonRepository mockPokemonRepository;
+  final mockPokemonRepository = MockPokemonRepository();
+  final usecase = GetAllPokemonImp(mockPokemonRepository);
 
-  const tNumber = 1;
-  const tNumberPokemon = NumberPokemon(number: 1, text: 'test');
-
-  test(
-    'should get one pokemon from the number',
-    () async {
-      // arrange
-      mockPokemonRepository = MockPokemonRepository();
-      when(mockPokemonRepository.getOnePokemonImp(1))
-          .thenAnswer((_) async => Right(tNumberPokemon));
-      // act
-      usecase = GetOnePokemonImp(mockPokemonRepository);
-      final result = await usecase.execute(number: tNumber);
-      // assert
-      expect(result, const Right(tNumberPokemon));
-      verify(mockPokemonRepository.getOnePokemonImp(tNumber));
-      verifyNoMoreInteractions(mockPokemonRepository);
-    },
+  final tPokemon1 = PokemonEntity (
+    id: 1,
+    name: 'Bulbasaur',
   );
+
+  final tPokemon2 = PokemonEntity (
+    id: 2,
+    name: 'Ivysaur',
+  );
+
+  final tListPokemon = [tPokemon1,tPokemon2];
+  test ('should get all pokemon in the list', () async {
+    when(() => mockPokemonRepository.getAllPokemon())
+      .thenAnswer((_) async => Right(tListPokemon));
+    final result = await usecase(NoParams());
+
+    expect(result, Right(tListPokemon));
+
+    verify(() => mockPokemonRepository.getAllPokemon());
+    verifyNoMoreInteractions(mockPokemonRepository);
+});
 }
