@@ -4,7 +4,7 @@ import '../../../../../core/error/failure.dart';
 
 import '../../entities/pokemon_entity.dart';
 import '../../repositories/pokemon_repository.dart';
-import '../pokemon_usecase.dart';
+import '../../../../../core/error/usecases/usecase_failure_standard.dart';
 
 
 class GetOnePokemonImp extends UseCase<PokemonEntity, Params> {

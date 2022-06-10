@@ -5,7 +5,7 @@ import 'package:mocktail/mocktail.dart';
 import '../../../../../../lib/features/pokemon_clean_arch/domain/usecases/get_one_pokemon/get_one_pokemon_imp.dart';
 import '../../../../../../lib/features/pokemon_clean_arch/domain/repositories/pokemon_repository.dart';
 import '../../../../../../lib/features/pokemon_clean_arch/domain/entities/pokemon_entity.dart';
-import '../../../../../../lib/features/pokemon_clean_arch/domain/usecases/pokemon_usecase.dart';
+import '../../../../../../lib/core/error/usecases/usecase_failure_standard.dart';
 
 class MockPokemonRepository extends Mock implements PokemonRepository {}
 void main() {
