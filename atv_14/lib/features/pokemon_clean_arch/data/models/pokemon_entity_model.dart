@@ -1,4 +1,6 @@
 import '../../domain/entities/pokemon_entity.dart';
+import '../../data/models/pokemon_entity_model.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 class PokemonEntityModel extends PokemonEntity {
   PokemonEntityModel({
