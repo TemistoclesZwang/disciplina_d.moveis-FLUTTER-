@@ -4,8 +4,9 @@ import '../../../../../core/error/failure.dart';
 
 import '../../entities/pokemon_entity.dart';
 import '../../repositories/pokemon_repository.dart';
-import '../../../../../core/error/usecases/usecase_failure_standard.dart';
+import '../../../../../core/usecases/usecase_failure_standard.dart';
 
+import '../../../../../core/error/failure.dart';
 
 class GetOnePokemonImp extends UseCase<PokemonEntity, Params> {
   final PokemonRepository repository;

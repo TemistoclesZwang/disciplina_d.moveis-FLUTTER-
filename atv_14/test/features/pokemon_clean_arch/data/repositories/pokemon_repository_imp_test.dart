@@ -1,4 +1,4 @@
-import 'package:atv_14/core/network/network_info.dart';
+import 'package:atv_14/core/platform/network_info.dart';
 import 'package:atv_14/features/pokemon_clean_arch/data/datasources/local/pokemon_local_data_source.dart';
 import 'package:atv_14/features/pokemon_clean_arch/data/datasources/remote/pokemon_remote_data_source.dart';
 import 'package:atv_14/features/pokemon_clean_arch/data/repositories/pokemon_repository_imp.dart';
