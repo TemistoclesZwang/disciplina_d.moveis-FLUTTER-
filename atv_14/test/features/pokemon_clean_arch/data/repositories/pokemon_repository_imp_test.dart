@@ -4,6 +4,7 @@ import 'package:atv_14/features/pokemon_clean_arch/data/datasources/remote/pokem
 import 'package:atv_14/features/pokemon_clean_arch/data/models/pokemon_entity_model.dart';
 import 'package:atv_14/features/pokemon_clean_arch/data/repositories/pokemon_repository_imp.dart';
 import 'package:atv_14/features/pokemon_clean_arch/domain/entities/pokemon_entity.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
@@ -22,33 +23,57 @@ void main() {
     MockLocalDataSource mockLocalDataSource;
     MockNetworkInfo mockNetworkInfo;    
     
+    final tId = 1;
+    final tPokemonModel =
+        PokemonEntityModel( id: tId, name: 'Bulbasaur');
+    final PokemonEntity tPokemonEntity = tPokemonModel;
+    
     setUp(() {
-    final mockRemoteDataSource = MockRemoteDataSource();
-    final mockLocalDataSource = MockLocalDataSource();
-    final mockNetworkInfo = MockNetworkInfo();
-    final repository = PokemonRepositoryImp(
+        mockRemoteDataSource = MockRemoteDataSource();
+        mockLocalDataSource = MockLocalDataSource();
+        mockNetworkInfo = MockNetworkInfo();
+        repository = PokemonRepositoryImp(
+            remoteDataSource: mockRemoteDataSource,
+            localDataSource: mockLocalDataSource,
+            networkInfo: mockNetworkInfo,
+        );
+    group('getConcreteNumberTrivia', () {
+    // DATA FOR THE MOCKS AND ASSERTIONS
+    // We'll use these three variables throughout all the tests
 
-      remoteDataSource: mockRemoteDataSource,
-      localDataSource: mockLocalDataSource,
-      networkInfo: mockNetworkInfo,
-    );
-  });
-
-  group('getConcreteNumberTrivia', () {
-  // DATA FOR THE MOCKS AND ASSERTIONS
-  // We'll use these three variables throughout all the tests
-  final tId = 1;
-  final mockNetworkInfo = MockNetworkInfo();
-  final tPokemonModel =
-      PokemonEntityModel( id: tId, name: 'Bulbasaur');
-  final PokemonEntity tPokemonEntity = tPokemonModel;
-
-  test('should check if the device is online', () {
+    setUp(() {
+          when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
+        });
+    test('should check if the device is online', () {
     //arrange
-  setUp(() {
-        when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      });
+    when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
+    // act
+    repository.getOnePokemon(tId);
+    // assert
+    verify(() => mockNetworkInfo.isConnected);
   });
-});
+  });
+  
+  group('device is offline', () {
+  setUp(() {
+    when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => false);
+  });
 
+  test(
+    'should return last locally cached data when the cached data is present',
+    () async {
+      // arrange
+      when(() => mockLocalDataSource.getLastPokemon())
+          .thenAnswer((_) async => tPokemonModel);
+      // act
+      final result = await repository.getOnePokemon(tId);
+      // assert
+      verifyZeroInteractions(mockRemoteDataSource);
+      verify(() => mockLocalDataSource.getLastPokemon());
+      expect(result, equals(Right(tPokemonEntity)));
+    },
+  );
+});
+//.end
+  });
 }
