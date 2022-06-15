@@ -21,33 +21,33 @@ class PokemonRepositoryImp implements PokemonRepository {
     required this.networkInfo,
   });
 
+  // @override
+  // Future<Either<Failure, List<PokemonEntity>>> getAllPokemon() {
+  //   // TODO: implement getAllPokemon
+  //   throw UnimplementedError();
+  // }
+
   @override
-  Future<Either<Failure, List<PokemonEntity>>> getAllPokemon() {
-    // TODO: implement getAllPokemon
-    throw UnimplementedError();
+  Future<Either<Failure, List<PokemonEntity>>> getAllPokemon () async{
+      if (await networkInfo.isConnected) {
+//get remote data
+      try {
+        final remotePokemon = await remoteDataSource.GetAllPokemon();
+        localDataSource.cachePokemon(remotePokemon);
+        return Right(remotePokemon as List<PokemonEntity>);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      try {
+        final localPokemon = await localDataSource.getLastPokemon();
+        return Right(localPokemon as List<PokemonEntity>);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    }
+
   }
-
-//   @override
-//   Future<Either<Failure, List<PokemonEntity>>> getAllPokemon () async{
-//       if (await networkInfo.isConnected) {
-// //get remote data
-//       try {
-//         final remotePokemon = await remoteDataSource.GetAllPokemon();
-//         localDataSource.cachePokemon(remotePokemon);
-//         return Right(remotePokemon);
-//       } on ServerException {
-//         return Left(ServerFailure());
-//       }
-//     } else {
-//       try {
-//         final localPokemon = await localDataSource.getLastPokemon();
-//         return Right(localPokemon);
-//       } on CacheException {
-//         return Left(CacheFailure());
-//       }
-//     }
-
-//   }
 
 
   @override
