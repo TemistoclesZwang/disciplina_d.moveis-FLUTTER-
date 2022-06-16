@@ -37,7 +37,7 @@ void main() {
             localDataSource: mockLocalDataSource,
             networkInfo: mockNetworkInfo,
         );
-    group('getConcreteNumberTrivia', () {
+    group('getOnePokemon', () {
     // DATA FOR THE MOCKS AND ASSERTIONS
     // We'll use these three variables throughout all the tests
 
@@ -54,6 +54,28 @@ void main() {
   });
   });
   
+  group('device is online', () {
+  // This setUp applies only to the 'device is online' group
+  setUp(() {
+    when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
+  });
+
+  test(
+    'should return remote data when the call to remote data source is successful',
+    () async {
+      // arrange
+      when(() => mockRemoteDataSource.GetOnePokemon(tId)
+          ).thenAnswer((_) async => tPokemonModel);
+      // act
+      final result = await repository.getOnePokemon(tId);
+      // assert
+      verify(() => mockRemoteDataSource.GetOnePokemon(tId));
+      expect(result, equals(Right(tPokemonEntity)));
+    },
+  );
+});
+
+
   group('device is offline', () {
   setUp(() {
     when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => false);
