@@ -7,7 +7,7 @@ import 'package:atv_14/features/pokemon_clean_arch/domain/entities/pokemon_entit
 
 import 'package:atv_14/core/error/failure.dart';
 
-import '../../../../core/platform/network_info.dart';
+import '../../../../core/network/network_info.dart';
 import '../../domain/repositories/pokemon_repository.dart';
 
 class PokemonRepositoryImp implements PokemonRepository {
