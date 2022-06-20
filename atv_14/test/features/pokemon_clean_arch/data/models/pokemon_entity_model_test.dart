@@ -4,6 +4,7 @@ import 'package:atv_14/features/pokemon_clean_arch/domain/entities/pokemon_entit
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../fixtures/fixture_reader.dart';
+import '../../fixtures/pokemon_fixture.json';
 
 
 void main() {
