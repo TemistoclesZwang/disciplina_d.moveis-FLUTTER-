@@ -12,7 +12,7 @@ import '../../domain/repositories/pokemon_repository.dart';
 
 class PokemonRepositoryImp implements PokemonRepository {
   final PokemonRemoteDataSource remoteDataSource; 
-  final GetLastPokemonLocalDataSource localDataSource;
+  final PokemonLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 
   PokemonRepositoryImp({
