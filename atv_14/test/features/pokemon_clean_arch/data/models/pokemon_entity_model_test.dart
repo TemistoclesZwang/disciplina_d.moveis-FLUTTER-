@@ -10,7 +10,7 @@ import '../../fixtures/pokemon_fixture.json';
 void main() {
   final tPokemonModel = PokemonEntityModel(
     id: 1,
-    name: 'Bulbasaur',
+    name: 'Bulbasaur'
   );
   group('subclass', (){
     test('should be subclass of PokemonEntity', (){
@@ -18,8 +18,8 @@ void main() {
     });
   });
 
-  group('json tests',  (){
-    test('should be json', (){ //!
+  group('json tests', ()async {
+    test('should be json', ()async { //!
       final Map<String, dynamic> jsonMap =
           jsonDecode(fixtures('pokemon_fixture.json'));
 
@@ -30,7 +30,7 @@ void main() {
       expect(result, tPokemonModel);
     });
 
-    test('should be return a map from json inserted', (){ //!
+    test('should be return a map from json inserted', ()async { //!
       final result = tPokemonModel.toJson();
       final mapGenerated = {
         'id': 1,

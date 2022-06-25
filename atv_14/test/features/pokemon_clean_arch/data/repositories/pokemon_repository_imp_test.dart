@@ -15,7 +15,7 @@ import 'package:data_connection_checker/data_connection_checker.dart';
 class MockRemoteDataSource extends Mock
     implements PokemonRemoteDataSource {}
 
-class MockLocalDataSource extends Mock implements GetLastPokemonLocalDataSource {}
+class MockLocalDataSource extends Mock implements PokemonLocalDataSource {}
 
 class MockNetworkInfo extends Mock implements NetworkInfo {}
 
