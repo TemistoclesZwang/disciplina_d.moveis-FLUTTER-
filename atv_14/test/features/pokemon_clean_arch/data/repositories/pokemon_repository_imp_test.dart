@@ -86,12 +86,12 @@ void main() {
     'should return remote data when the call to remote data source is successful',
     () async {
       // arrange
-      when(() => mockRemoteDataSource.GetOnePokemon(tId)
+      when(() => mockRemoteDataSource.getOnePokemon(tId)
           ).thenAnswer((_) async => tPokemonModel);
       // act
       final result = await repository.getOnePokemon(tId);
       // assert
-      verify(() => mockRemoteDataSource.GetOnePokemon(tId));
+      verify(() => mockRemoteDataSource.getOnePokemon(tId));
       expect(result, equals(Right(tPokemonEntity)));
     },
   );
@@ -99,12 +99,12 @@ void main() {
     'should return server failure when the call to remote data source is unsuccessfull',
     () async {
       // arrange
-      when(() => mockRemoteDataSource.GetOnePokemon(tId)
+      when(() => mockRemoteDataSource.getOnePokemon(tId)
           ).thenThrow(ServerException());
       // act
       final result = await repository.getOnePokemon(tId);
       // assert
-      verify(() => mockRemoteDataSource.GetOnePokemon(tId));
+      verify(() => mockRemoteDataSource.getOnePokemon(tId));
       verifyZeroInteractions(mockRemoteDataSource);
 
       expect(result, equals(Left(ServerFailure())));
@@ -175,12 +175,12 @@ void main() {
     'should return remote data when the call to remote data source is successful',
     () async {
       // arrange
-      when(() => mockRemoteDataSource.GetAllPokemon()
+      when(() => mockRemoteDataSource.getAllPokemon()
           ).thenAnswer((_) async => tPokemonModel);
       // act
       final result = await repository.getAllPokemon();
       // assert
-      verify(() => mockRemoteDataSource.GetAllPokemon());
+      verify(() => mockRemoteDataSource.getAllPokemon());
       expect(result, equals(Right(tPokemonEntity)));
     },
   );
@@ -188,12 +188,12 @@ void main() {
     'should return server failure when the call to remote data source is unsuccessfull',
     () async {
       // arrange
-      when(() => mockRemoteDataSource.GetAllPokemon()
+      when(() => mockRemoteDataSource.getAllPokemon()
           ).thenThrow(ServerException());
       // act
       final result = await repository.getAllPokemon();
       // assert
-      verify(() => mockRemoteDataSource.GetAllPokemon());
+      verify(() => mockRemoteDataSource.getAllPokemon());
       verifyZeroInteractions(mockRemoteDataSource);
 
       expect(result, equals(Left(ServerFailure())));

@@ -11,6 +11,7 @@ abstract class PokemonLocalDataSource {
 
 const CACHED_POKEMON_ENTITY = 'CACHED_POKEMON_ENTITY';
 
+
 class PokemonLocalDataSourceImpl implements PokemonLocalDataSource {
   final SharedPreferences sharedPreferences;
   PokemonLocalDataSourceImpl({required this.sharedPreferences});

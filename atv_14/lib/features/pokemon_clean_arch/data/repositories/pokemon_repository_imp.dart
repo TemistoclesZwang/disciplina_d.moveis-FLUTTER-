@@ -32,7 +32,7 @@ class PokemonRepositoryImp implements PokemonRepository {
       if (await networkInfo.isConnected) {
 //get remote data
       try {
-        final remotePokemon = await remoteDataSource.GetAllPokemon();
+        final remotePokemon = await remoteDataSource.getAllPokemon();
         localDataSource.cachePokemon(remotePokemon);
         return Right(remotePokemon as List<PokemonEntity>);
       } on ServerException {
@@ -55,7 +55,7 @@ class PokemonRepositoryImp implements PokemonRepository {
     if (await networkInfo.isConnected) {
 //get remote data
       try {
-        final remotePokemon = await remoteDataSource.GetOnePokemon(id);
+        final remotePokemon = await remoteDataSource.getOnePokemon(id);
         localDataSource.cachePokemon(remotePokemon);
         return Right(remotePokemon);
       } on ServerException {
